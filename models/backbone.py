@@ -237,7 +237,7 @@ if __name__ == '__main__':
     Channel = 3
 
     input_images = torch.randn(batch_size,Channel,Height,Width)
-    model = resnet18(pretrained=True)
+    model = resnet18(pretrained=False)
     output_features = model(input_images)
 
     print("Input size is:",input_images.shape)
