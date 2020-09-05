@@ -4,8 +4,8 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 
 ## Task
 
-- [ ] Backbone model
-- [ ] FPEM model
+- [x] Backbone model
+- [x] FPEM model
 - [ ] FPM model
 - [ ] Integrated model
 - [ ] Loss Function
