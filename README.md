@@ -6,7 +6,7 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 
 - [x] Backbone model
 - [x] FPEM model
-- [ ] FPM model
+- [ ] FFM model
 - [ ] Integrated model
 - [ ] Loss Function
 - [ ] Data preprocessing
