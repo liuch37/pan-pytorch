@@ -1,0 +1,8 @@
+editdistance
+opencv-python
+scipy
+torch
+torchvision
+pyclipper
+Cython
+PIL
