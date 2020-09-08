@@ -9,7 +9,7 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 - [x] FFM model
 - [x] Integrated model
 - [x] Loss Function
-- [ ] Data preprocessing
+- [x] Data preprocessing
 - [ ] Data postprocessing
 - [ ] Training pipeline
 - [ ] Inference pipeline
