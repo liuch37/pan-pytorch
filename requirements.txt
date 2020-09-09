@@ -1,8 +1,7 @@
 editdistance
 opencv-python
-scipy
 torch
 torchvision
 pyclipper
-Cython
+Cython (optional if want to speed up postprocessing)
 PIL
