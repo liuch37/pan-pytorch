@@ -38,7 +38,7 @@ if __name__ == '__main__':
     parser.add_argument('--model', type=str, default='', help='model path')
     parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw")
     parser.add_argument('--gpu', type=bool, default=False, help="GPU being used or not")
-    parser.add_argument('--bbox_type', type=str, default='poly', help="dataset type - cwt")
+    parser.add_argument('--bbox_type', type=str, default='poly', help="bounding box type - poly | rect")
 
     opt = parser.parse_args()
     print(opt)
