@@ -10,7 +10,7 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 - [x] Integrated model
 - [x] Loss Function
 - [x] Data preprocessing
-- [ ] Data postprocessing
+- [x] Data postprocessing
 - [ ] Training pipeline
 - [ ] Inference pipeline
 
