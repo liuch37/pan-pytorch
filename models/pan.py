@@ -6,10 +6,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from backbone import resnet18
-from fpem import FPEM, Conv_BN_ReLU
-from ffm import FFM
-from head import PA_Head
+from .backbone import resnet18
+from .fpem import FPEM, Conv_BN_ReLU
+from .ffm import FFM
+from .head import PA_Head
 
 __all__ = ['PAN']
 
