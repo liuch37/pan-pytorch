@@ -14,6 +14,21 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 - [ ] Training pipeline
 - [ ] Inference pipeline
 
+## Command
+
+### Training
+
+``
+python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True --bbox_type poly
+``
+
+### Inference
+
+``
+``
+
+## Results
+
 ## Supported Dataset
 
 - [ ] SynthText: https://www.robots.ox.ac.uk/~vgg/data/scenetext/
