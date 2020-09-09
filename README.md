@@ -33,7 +33,7 @@ python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True --bbox_typ
 
 - [ ] SynthText: https://www.robots.ox.ac.uk/~vgg/data/scenetext/
 - [ ] Total-Text: https://github.com/cs-chan/Total-Text-Dataset
-- [ ] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
+- [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
 
 ## Source
 
