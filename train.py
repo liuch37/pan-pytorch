@@ -38,7 +38,6 @@ if __name__ == '__main__':
     parser.add_argument('--model', type=str, default='', help='model path')
     parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw")
     parser.add_argument('--gpu', type=bool, default=False, help="GPU being used or not")
-    parser.add_argument('--bbox_type', type=str, default='poly', help="bounding box type - poly | rect")
 
     opt = parser.parse_args()
     print(opt)
@@ -80,17 +79,15 @@ if __name__ == '__main__':
     dataset_type = opt.dataset_type
     output_path = opt.output
     trained_model_path = opt.model
-    bbox_type = opt.bbox_type    
 
     # create dataset
     print("Create dataset......")
     if dataset_type == 'ctw': # street view text dataset
         train_dataset = ctw1500.PAN_CTW(split='train', is_transform=True, img_size=640, short_size=640, kernel_scale=0.7, report_speed=False)
-        test_dataset = ctw1500.PAN_CTW(split='test', is_transform=False, img_size=640, short_size=640, kernel_scale=0.7, report_speed=False)
     else:
         print("Not supported yet!")
         exit(1)
-    
+
     # make dataloader
     train_dataloader = torch.utils.data.DataLoader(
                     train_dataset,
@@ -99,15 +96,8 @@ if __name__ == '__main__':
                     num_workers=int(worker),
                     drop_last=True,
                     pin_memory=True)
-        
-    test_dataloader = torch.utils.data.DataLoader(
-                    test_dataset,
-                    batch_size=batch_size,
-                    shuffle=False,
-                    num_workers=int(worker))
 
     print("Length of train dataset is:", len(train_dataset))
-    print("Length of test dataset is:", len(test_dataset))
 
     # make model output folder
     try:
@@ -141,8 +131,7 @@ if __name__ == '__main__':
 
     # train, evaluate, and save model
     print("Training starts......")
-    best_f1 = float('-inf')
-    
+
     start_epoch = 0
 
     for epoch in range(start_epoch, epochs):
@@ -165,14 +154,14 @@ if __name__ == '__main__':
             
             outputs = dict()
             # forward for detection output
-            det_out = model(data['imgs'])
+            det_out = model(data['imgs'].to(device))
             det_out = model._upsample(det_out, data['imgs'].size())
             # retreive ground truth labels
-            gt_texts = data['gt_texts']
-            gt_kernels = data['gt_kernels']
-            training_masks = data['training_masks']
-            gt_instances = data['gt_instances']
-            gt_bboxes = data['gt_bboxes']
+            gt_texts = data['gt_texts'].to(device)
+            gt_kernels = data['gt_kernels'].to(device)
+            training_masks = data['training_masks'].to(device)
+            gt_instances = data['gt_instances'].to(device)
+            gt_bboxes = data['gt_bboxes'].to(device)
             # calculate total loss
             det_loss = loss(det_out, gt_texts, gt_kernels, training_masks, gt_instances, gt_bboxes, loss_text_weight, loss_kernel_weight, loss_emb_weight)
             outputs.update(det_loss)
@@ -220,3 +209,12 @@ if __name__ == '__main__':
                 )
                 print(output_log)
                 sys.stdout.flush()
+                with open(os.path.join(output_path,'statistics.txt'), 'a') as f:
+                    f.write("{} {} {} {} {} {}\n".format(losses_text.avg, losses_kernels.avg, losses_emb.avg, losses.avg, ious_text.avg, ious_kernel.avg))
+
+        if epoch % 20 == 0:
+            print("Save model......")
+            if torch.cuda.is_available() == True and opt.gpu == True:
+                torch.save(model.module.state_dict(), '%s/model_epoch_%s.pth' % (output_path, str(epoch)))
+            else:
+                torch.save(model.state_dict(), '%s/model_epoch_%s.pth' % (output_path, str(epoch)))
