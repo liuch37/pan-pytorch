@@ -4,6 +4,7 @@ This code is to build data loader for arbitrary test dataset.
 
 import numpy as np
 from torch.utils import data
+import torchvision.transforms as transforms
 import cv2
 import torch
 import os
@@ -38,12 +39,12 @@ class PAN_test(data.Dataset):
 
         self.img_paths = []
 
-        for data_dir in data_dirs:
+        for data_dir in [data_dirs]:
             img_names = os.listdir(data_dir)
 
             img_paths = []
             for idx, img_name in enumerate(img_names):
-                img_path = data_dir + img_name
+                img_path = os.path.join(data_dir, img_name)
                 img_paths.append(img_path)
     
             self.img_paths.extend(img_paths)
