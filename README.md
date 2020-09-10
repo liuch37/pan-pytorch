@@ -11,15 +11,16 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 - [x] Loss Function
 - [x] Data preprocessing
 - [x] Data postprocessing
-- [ ] Training pipeline
+- [x] Training pipeline
 - [ ] Inference pipeline
+- [ ] Evaluation pipeline
 
 ## Command
 
 ### Training
 
 ``
-python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True --bbox_type poly
+python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True
 ``
 
 ### Inference
