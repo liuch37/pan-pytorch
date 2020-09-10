@@ -4,6 +4,7 @@ This is an unofficial implementation of pixel aggregation function in pure pytho
 
 import numpy as np
 import cv2
+import pdb
 
 def _pa(kernels, emb, label, cc, kernel_num, label_num, min_area=0):
     pred = np.zeros((label.shape[0], label.shape[1]), dtype=np.int32)
@@ -81,7 +82,6 @@ def _pa(kernels, emb, label, cc, kernel_num, label_num, min_area=0):
 
 def pa(kernels, emb, min_area=0):
     kernel_num = kernels.shape[0]
-    _, cc = cv2.connectedComponents(kernels[0], connectivity=4)
-    label_num, label = cv2.connectedComponents(kernels[1], connectivity=4)
-
-    return _pa(kernels[:-1], emb, label, cc, kernel_num, label_num, min_area)
+    _, cc = cv2.connectedComponents(kernels[0], connectivity=4) # text region connected components
+    label_num, label = cv2.connectedComponents(kernels[1], connectivity=4) # kernel region connected components
+    return _pa(kernels, emb, label, cc, kernel_num, label_num, min_area) # bug fix in official released code
