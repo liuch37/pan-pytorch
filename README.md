@@ -12,7 +12,7 @@ This is a PyTorch implementation of paper "Efficient and Accurate Arbitrary-Shap
 - [x] Data preprocessing
 - [x] Data postprocessing
 - [x] Training pipeline
-- [ ] Inference pipeline
+- [x] Inference pipeline
 - [ ] Evaluation pipeline
 
 ## Command
@@ -26,9 +26,12 @@ python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True
 ### Inference
 
 ``
+python inference.py --input ./data/CTW1500/test/text_image --model ./outputs/model_epoch_0.pth  --bbox_type poly
 ``
 
 ## Results
+
+
 
 ## Supported Dataset
 
