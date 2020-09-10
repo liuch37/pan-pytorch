@@ -26,7 +26,7 @@ python train.py --batch 32 --epoch 5000 --dataset_type ctw --gpu True
 ### Inference
 
 ``
-python inference.py --input ./data/CTW1500/test/text_image --model ./outputs/model_epoch_0.pth  --bbox_type poly
+python inference.py --input ./data/CTW1500/test/text_image --model ./outputs/model_epoch_0.pth --bbox_type poly
 ``
 
 ## Results
