@@ -3,11 +3,16 @@ Helper functions.
 '''
 
 import torch
+import torch.nn.functional as F
 import numpy as np
 import os
 import cv2
 from .pa.pa import pa
 import pdb
+
+def upsample(x, size, scale=1):
+    _, _, H, W = size
+    return F.interpolate(x, size=(H // scale, W // scale), mode='bilinear')
 
 def adjust_learning_rate(optimizer, dataloader, epoch, iter, schedule, lr, num_epoch):
     if isinstance(schedule, str):

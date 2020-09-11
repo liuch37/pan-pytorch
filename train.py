@@ -21,7 +21,7 @@ import pdb
 from dataset import ctw1500
 from models.pan import PAN
 from loss.loss import loss
-from utils.helper import adjust_learning_rate
+from utils.helper import adjust_learning_rate, upsample
 from utils.average_meter import AverageMeter
 
 # main function:
@@ -155,7 +155,7 @@ if __name__ == '__main__':
             outputs = dict()
             # forward for detection output
             det_out = model(data['imgs'].to(device))
-            det_out = model._upsample(det_out, data['imgs'].size())
+            det_out = upsample(det_out, data['imgs'].size())
             # retreive ground truth labels
             gt_texts = data['gt_texts'].to(device)
             gt_kernels = data['gt_kernels'].to(device)
