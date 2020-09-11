@@ -53,7 +53,7 @@ def _pa(kernels, emb, label, cc, kernel_num, label_num, min_area=0):
         que.append((tmpx, tmpy))
         pred[tmpx, tmpy] = label[tmpx, tmpy]
 
-    for kernel_idx in range(kernel_num - 1, -1, -1):
+    for kernel_idx in range(kernel_num - 2, -1, -1):
         while que:
             cur = que[0]
             que.pop(0)
@@ -84,4 +84,4 @@ def pa(kernels, emb, min_area=0):
     kernel_num = kernels.shape[0]
     _, cc = cv2.connectedComponents(kernels[0], connectivity=4) # text region connected components
     label_num, label = cv2.connectedComponents(kernels[1], connectivity=4) # kernel region connected components
-    return _pa(kernels, emb, label, cc, kernel_num, label_num, min_area) # bug fix in official released code
+    return _pa(kernels[:-1], emb, label, cc, kernel_num, label_num, min_area)
