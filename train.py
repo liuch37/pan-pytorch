@@ -191,7 +191,7 @@ if __name__ == '__main__':
             optimizer.step()
 
             # print log
-            print("batch: {} / total batch: {}".format(iter+1, len(train_dataloader)))
+            #print("batch: {} / total batch: {}".format(iter+1, len(train_dataloader)))
             if iter % 20 == 0:
                 output_log = '({batch}/{size}) LR: {lr:.6f} | ' \
                              'Loss: {loss:.3f} | ' \
