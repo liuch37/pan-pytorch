@@ -13,7 +13,7 @@ This is an unofficial PyTorch re-implementation of paper "Efficient and Accurate
 - [x] Data postprocessing
 - [x] Training pipeline
 - [x] Inference pipeline
-- [ ] Evaluation pipeline
+- [x] Evaluation pipeline
 
 ## Command
 
