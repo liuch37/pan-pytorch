@@ -34,9 +34,9 @@ python inference.py --input ./data/CTW1500/test/text_image --model ./outputs/mod
 ### CTW1500
 ![Statstics for CTW training](https://github.com/liuch37/pan-pytorch/blob/master/misc/ctw_statistics.png)
 
-Model   | Precision | Recall | F score | FPS   |
-------- | --------- | ------ | ------- | ----- |
-PAN-640 | 0.8509    | 0.7927 | 0.8208  |       |
+Model   | Precision | Recall | F score | FPS (CPU) + pa.py   | FPS (1 GPU) + pa.py | FPS (1 GPU) + pa.pyx |
+------- | --------- | ------ | ------- | ------------------- | ------------------- | -------------------- |
+PAN-640 | 0.8509    | 0.7927 | 0.8208  |                     |                     |                      |
 
 ## Supported Dataset
 
