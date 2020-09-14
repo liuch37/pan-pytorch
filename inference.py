@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
         # save result
         image_name, _ = os.path.splitext(os.path.basename(test_dataloader.dataset.img_paths[idx]))
-        write_result(image_name, outputs, output_path)
+        write_result(image_name, outputs, os.path.join(output_path, 'submit_ctw'))
 
         # draw and save images
         draw_result(test_dataloader.dataset.img_paths[idx], outputs, output_path)
