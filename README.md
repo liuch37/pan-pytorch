@@ -40,9 +40,9 @@ PAN-640 | 0.8509    | 0.7927 | 0.8208  | 0.3493              | 4.6347           
 
 ## Supported Dataset
 
+- [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
 - [ ] SynthText: https://www.robots.ox.ac.uk/~vgg/data/scenetext/
 - [ ] Total-Text: https://github.com/cs-chan/Total-Text-Dataset
-- [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
 
 ## Source
 
