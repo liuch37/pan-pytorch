@@ -31,7 +31,8 @@ python inference.py --input ./data/CTW1500/test/text_image --model ./outputs/mod
 
 ## Results
 
-
+### CTW1500
+![Statstics for CTW training](https://github.com/liuch37/pan-pytorch/blob/master/misc/ctw_statistics.png)
 
 ## Supported Dataset
 
