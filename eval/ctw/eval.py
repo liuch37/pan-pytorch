@@ -68,6 +68,7 @@ if __name__ == '__main__':
     tp, fp, npos = 0, 0, 0
 
     for pred_path in pred_list:
+        print("evaluting predict path:", pred_path)
         preds = get_pred(pred_path)
         gt_path = gt_root + pred_path.split('/')[-1]
         img = cv2.imread(img_root + pred_path.split('/')[-1][:-4] + '.jpg')
