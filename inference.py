@@ -20,7 +20,7 @@ import pdb
 # internal package
 from dataset import testdataset
 from models.pan import PAN
-from utils.helper import get_results, write_result, draw_result
+from utils.helper import get_results, write_result, draw_result, upsample
 
 # main function:
 if __name__ == '__main__':
@@ -99,6 +99,7 @@ if __name__ == '__main__':
 
     # model inference
     print("Prediction on testset......")
+    timer = []
     model.eval()
     for idx, data in enumerate(test_dataloader):
         print('Testing %d/%d' % (idx, len(test_dataloader)))
@@ -106,11 +107,14 @@ if __name__ == '__main__':
         # prepare input
         data['imgs'] = data['imgs'].to(device)
         # forward
+        start = time.time()
         with torch.no_grad():
             det_out = model(data['imgs'])
-            det_out = model._upsample(det_out, data['imgs'].size(), 4)
+            det_out = upsample(det_out, data['imgs'].size(), 4)
             det_res = get_results(det_out, data['img_metas'], min_area, min_score, bbox_type)
             outputs.update(det_res)
+        end = time.time()
+        timer.append(end - start)
 
         # save result
         image_name, _ = os.path.splitext(os.path.basename(test_dataloader.dataset.img_paths[idx]))
@@ -118,3 +122,5 @@ if __name__ == '__main__':
 
         # draw and save images
         draw_result(test_dataloader.dataset.img_paths[idx], outputs, output_path)
+
+    print("Average FPS:", 1/(sum(timer)/len(timer)))
