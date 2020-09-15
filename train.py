@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     # create dataset
     print("Create dataset......")
-    if dataset_type == 'ctw': # street view text dataset
+    if dataset_type == 'ctw': # ctw dataset
         train_dataset = ctw1500.PAN_CTW(split='train', is_transform=True, img_size=640, short_size=640, kernel_scale=0.7, report_speed=False)
     else:
         print("Not supported yet!")
