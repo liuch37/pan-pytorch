@@ -29,7 +29,7 @@ if __name__ == '__main__':
     freeze_support()
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--batch', type=int, default=32, help='input batch size')
+        '--batch', type=int, default=16, help='input batch size')
     parser.add_argument(
         '--worker', type=int, default=4, help='number of data loading workers')
     parser.add_argument(
