@@ -1,10 +1,16 @@
+'''
+This is the evaluation code modified from the originally released code.
+1) Remove dependency on Polygon library
+2) Fix input prediction format to x0,y0,x1,y1,...
+'''
+
 from os import listdir
 from scipy import io
 import numpy as np
 import cv2
 
 """
-Input format: y0,x0, ..... yn,xn. Each detection is separated by the end of line token ('\n')'
+Input format: x0,y0, ..... xn,yn. Each detection is separated by the end of line token ('\n')'
 """
 project_root = '../../'
 
@@ -81,8 +87,8 @@ def detection_filtering(detections, groundtruths, threshold=0.5, H, W):
                 detection = detection.split(',')
                 # detection = map(int, detection[0:-1])
                 detection = map(int, detection)
-                det_y = detection[0::2]
-                det_x = detection[1::2]
+                det_x = detection[0::2]
+                det_y = detection[1::2]
 
                 det_p = np.concatenate((np.array(det_x), np.array(det_y)))
                 det_p = det_p.reshape(2, -1).transpose()
@@ -163,8 +169,8 @@ for input_id in allInputs:
                     gt_p = gt_p.reshape(2, -1).transpose()
                     #gt_p = plg.Polygon(gt_p) # replaced
 
-                    det_y = detection[0::2]
-                    det_x = detection[1::2]
+                    det_y = detection[1::2]
+                    det_x = detection[0::2]
 
                     det_p = np.concatenate((np.array(det_x), np.array(det_y)))
                     # print (det_p.shape)
