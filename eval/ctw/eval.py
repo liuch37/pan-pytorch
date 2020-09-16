@@ -1,3 +1,9 @@
+'''
+This is the evaluation code modified from the originally released code.
+1) Remove dependency on Polygon library
+2) Fix input prediction format to x0,y0,x1,y1,...
+'''
+
 import file_util
 import numpy as np
 import cv2
@@ -79,7 +85,7 @@ if __name__ == '__main__':
         cover = set()
         for pred_id, pred in enumerate(preds):
             pred = np.array(pred)
-            pred = pred.reshape(pred.shape[0] // 2, 2)[:, ::-1]
+            pred = pred.reshape(pred.shape[0] // 2, 2)
 
             #pred_p = plg.Polygon(pred)
 
