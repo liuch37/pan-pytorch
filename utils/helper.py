@@ -97,7 +97,8 @@ def write_result(image_name, outputs, result_path):
 
     lines = []
     for i, bbox in enumerate(bboxes):
-        bbox = bbox.reshape(-1, 2)[:, ::-1].reshape(-1)
+        #bbox = bbox.reshape(-1, 2)[:, ::-1].reshape(-1)
+        bbox = bbox.reshape(-1, 2).reshape(-1) # fix write output format in (x,y) order
         values = [int(v) for v in bbox]
         line = "%d" % values[0]
         for v_id in range(1, len(values)):
