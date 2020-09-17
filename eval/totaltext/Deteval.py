@@ -8,6 +8,7 @@ from os import listdir
 from scipy import io
 import numpy as np
 import cv2
+import pdb
 
 """
 Input format: x0,y0, ..... xn,yn. Each detection is separated by the end of line token ('\n')'
@@ -73,13 +74,13 @@ def gt_reading_mod(gt_dir, gt_id):
     return gt
 
 
-def detection_filtering(detections, groundtruths, threshold=0.5, H, W):
+def detection_filtering(detections, groundtruths, threshold, H, W):
     for gt_id, gt in enumerate(groundtruths):
         if (gt[5] == '#') and (gt[1].shape[1] > 1):
             gt_x = map(int, np.squeeze(gt[1]))
             gt_y = map(int, np.squeeze(gt[3]))
 
-            gt_p = np.concatenate((np.array(gt_x), np.array(gt_y)))
+            gt_p = np.concatenate((np.array(list(gt_x)), np.array(list(gt_y))))
             gt_p = gt_p.reshape(2, -1).transpose()
             #gt_p = plg.Polygon(gt_p) # replaced
 
@@ -87,6 +88,7 @@ def detection_filtering(detections, groundtruths, threshold=0.5, H, W):
                 detection = detection.split(',')
                 # detection = map(int, detection[0:-1])
                 detection = map(int, detection)
+                detection = np.array(list(detection))
                 det_x = detection[0::2]
                 det_y = detection[1::2]
 
@@ -158,14 +160,14 @@ for input_id in allInputs:
 
                     # detection = map(int, detection[:-1])
                     detection = map(int, detection)
+                    detection = np.array(list(detection))
                     # print (len(detection))
 
                     # from IPython import embed;embed()
                     # detection = list(detection)
                     gt_x = map(int, np.squeeze(gt[1]))
                     gt_y = map(int, np.squeeze(gt[3]))
-
-                    gt_p = np.concatenate((np.array(gt_x), np.array(gt_y)))
+                    gt_p = np.concatenate((np.array(list(gt_x)), np.array(list(gt_y))))
                     gt_p = gt_p.reshape(2, -1).transpose()
                     #gt_p = plg.Polygon(gt_p) # replaced
 
