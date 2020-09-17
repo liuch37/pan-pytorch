@@ -14,9 +14,9 @@ Input format: x0,y0, ..... xn,yn. Each detection is separated by the end of line
 """
 project_root = '../../'
 
-input_dir = project_root + 'outputs/submit_tt/'
+input_dir = project_root + 'results/submit_tt/'
 gt_dir = project_root + 'data/totaltext/Groundtruth/Polygon/Test/'
-fid_path = project_root + 'outputs/res_tt.txt'
+fid_path = project_root + 'outputs/totaltext/res_tt.txt'
 img_root = project_root + 'data/totaltext/Images/Test/'
 
 allInputs = listdir(input_dir)
