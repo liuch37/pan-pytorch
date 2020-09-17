@@ -263,7 +263,7 @@ def one_to_many(local_sigma_table, local_tau_table, local_accumulative_recall,
 def many_to_many(local_sigma_table, local_tau_table, local_accumulative_recall,
                  local_accumulative_precision, global_accumulative_recall, global_accumulative_precision,
                  gt_flag, det_flag):
-    for det_id in xrange(num_det):
+    for det_id in range(num_det):
         # skip the following if the detection was matched
         if det_flag[0, det_id] > 0:
             continue
