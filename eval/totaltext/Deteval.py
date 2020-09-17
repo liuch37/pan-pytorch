@@ -299,7 +299,7 @@ def many_to_many(local_sigma_table, local_tau_table, local_accumulative_recall,
     return local_accumulative_recall, local_accumulative_precision, global_accumulative_recall, global_accumulative_precision, gt_flag, det_flag
 
 
-for idx in xrange(len(global_sigma)):
+for idx in range(len(global_sigma)):
     print(allInputs[idx])
     local_sigma_table = global_sigma[idx]
     local_tau_table = global_tau[idx]
