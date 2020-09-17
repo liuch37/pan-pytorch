@@ -202,7 +202,7 @@ total_num_det = 0
 def one_to_one(local_sigma_table, local_tau_table, local_accumulative_recall,
                local_accumulative_precision, global_accumulative_recall, global_accumulative_precision,
                gt_flag, det_flag):
-    for gt_id in xrange(num_gt):
+    for gt_id in range(num_gt):
         qualified_sigma_candidates = np.where(local_sigma_table[gt_id, :] > tr)
         num_qualified_sigma_candidates = qualified_sigma_candidates[0].shape[0]
         qualified_tau_candidates = np.where(local_tau_table[gt_id, :] > tp)
@@ -223,7 +223,7 @@ def one_to_one(local_sigma_table, local_tau_table, local_accumulative_recall,
 def one_to_many(local_sigma_table, local_tau_table, local_accumulative_recall,
                 local_accumulative_precision, global_accumulative_recall, global_accumulative_precision,
                 gt_flag, det_flag):
-    for gt_id in xrange(num_gt):
+    for gt_id in range(num_gt):
         # skip the following if the groundtruth was matched
         if gt_flag[0, gt_id] > 0:
             continue
