@@ -38,6 +38,13 @@ Model   | Precision | Recall | F score | FPS (CPU) + pa.py   | FPS (1 GPU) + pa.
 ------- | --------- | ------ | ------- | ------------------- | ------------------- | -------------------- |
 PAN-640 | 0.8509    | 0.7927 | 0.8208  | 0.3493              | 4.6347              | 21.167               |
 
+### TotalText
+![Statstics for TT training](https://github.com/liuch37/pan-pytorch/blob/master/misc/tt_statistics.png)
+
+Model   | Precision | Recall | F score | FPS (CPU) + pa.py   | FPS (1 GPU) + pa.py | FPS (1 GPU) + pa.pyx |
+------- | --------- | ------ | ------- | ------------------- | ------------------- | -------------------- |
+PAN-640 | 0.9011    | 0.8040 | 0.8498  | 0.2883              | 7.6481              | 20.390               |
+
 ## Supported Dataset
 
 - [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
