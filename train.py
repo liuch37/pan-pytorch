@@ -18,7 +18,7 @@ import sys
 import time
 import pdb
 # internal package
-from dataset import ctw1500, totaltext
+from dataset import ctw1500, totaltext, synthtext
 from models.pan import PAN
 from loss.loss import loss
 from utils.helper import adjust_learning_rate, upsample
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         '--epoch', type=int, default=601, help='number of epochs')
     parser.add_argument('--output', type=str, default='outputs', help='output folder name')
     parser.add_argument('--model', type=str, default='', help='model path')
-    parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw | tt")
+    parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw | tt | synthtext")
     parser.add_argument('--gpu', type=bool, default=False, help="GPU being used or not")
 
     opt = parser.parse_args()
@@ -97,6 +97,12 @@ if __name__ == '__main__':
                                          kernel_scale=0.7,
                                          with_rec=False,
                                          report_speed=False)
+    elif dataset_type == 'synthtext': # synthtext dataset
+        train_dataset = synthtext.PAN_Synth(is_transform=True,
+                                            img_size=640,
+                                            short_size=640,
+                                            kernel_scale=0.5,
+                                            with_rec=False)
     else:
         print("Not supported yet!")
         exit(1)
