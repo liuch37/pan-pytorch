@@ -16,7 +16,7 @@ import scipy.io as scio
 import matplotlib.pyplot as plt
 import pdb
 
-synth_root_dir = '../data/SynthText/' # to be changed
+synth_root_dir = './data/SynthText/'
 synth_train_data_dir = synth_root_dir
 synth_train_gt_path = synth_root_dir + 'gt.mat'
 
