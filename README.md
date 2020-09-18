@@ -53,6 +53,8 @@ PAN-640 | 0.9011    | 0.8040 | 0.8498  | 0.2883              | 7.6481           
 - [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
 - [x] Total-Text: https://github.com/cs-chan/Total-Text-Dataset
 - [x] SynthText: https://www.robots.ox.ac.uk/~vgg/data/scenetext/
+- [ ] MSRA-TD500: http://www.iapr-tc11.org/mediawiki/index.php/MSRA_Text_Detection_500_Database_(MSRA-TD500)
+- [ ] ICDAR-2015: https://rrc.cvc.uab.es/
 
 ## Source
 
