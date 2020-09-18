@@ -103,7 +103,7 @@ if __name__ == '__main__':
                                             short_size=640,
                                             kernel_scale=0.5,
                                             with_rec=False)
-    elif dataset_type == 'msra': # synthtext dataset
+    elif dataset_type == 'msra': # msra dataset
         train_dataset = msra.PAN_MSRA(split='train',
                                       is_transform=True,
                                       img_size=736,
