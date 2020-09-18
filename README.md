@@ -45,6 +45,9 @@ Model   | Precision | Recall | F score | FPS (CPU) + pa.py   | FPS (1 GPU) + pa.
 ------- | --------- | ------ | ------- | ------------------- | ------------------- | -------------------- |
 PAN-640 | 0.9011    | 0.8040 | 0.8498  | 0.2883              | 7.6481              | 20.390               |
 
+### SynthText
+![Statstics for SynthText training](https://github.com/liuch37/pan-pytorch/blob/master/misc/synthtext_statistics.png)
+
 ## Supported Dataset
 
 - [x] CTW1500: https://github.com/Yuliang-Liu/Curve-Text-Detector
