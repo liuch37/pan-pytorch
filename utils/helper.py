@@ -9,6 +9,7 @@ import os
 import cv2
 from .pa.pa import pa
 import pdb
+import zipfile
 
 def upsample(x, size, scale=1):
     _, _, H, W = size
@@ -125,3 +126,26 @@ def draw_result(image_path, outputs, output_path):
     img = cv2.imread(image_path)
     img = cv2.drawContours(img, contours, -1, (0,255,0), 2)
     cv2.imwrite(os.path.join(output_path, image_name+'.png'), img)
+
+def write_result_ic15(img_name, outputs, result_path):
+    assert result_path.endswith('.zip'), 'Error: ic15 result should be a zip file!'
+
+    tmp_folder = result_path.replace('.zip', '')
+
+    bboxes = outputs['bboxes']
+
+    lines = []
+    for i, bbox in enumerate(bboxes):
+        values = [int(v) for v in bbox]
+        line = "%d,%d,%d,%d,%d,%d,%d,%d\n" % tuple(values)
+        lines.append(line)
+
+    file_name = 'res_%s.txt' % img_name
+    file_path = os.path.join(tmp_folder, file_name)
+    with open(file_path, 'w') as f:
+        for line in lines:
+            f.write(line)
+
+    z = zipfile.ZipFile(result_path, 'a', zipfile.ZIP_DEFLATED)
+    z.write(file_path, file_name)
+    z.close()
