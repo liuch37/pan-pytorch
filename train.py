@@ -18,7 +18,7 @@ import sys
 import time
 import pdb
 # internal package
-from dataset import ctw1500, totaltext, synthtext, msra
+from dataset import ctw1500, totaltext, synthtext, msra, ic15
 from models.pan import PAN
 from loss.loss import loss
 from utils.helper import adjust_learning_rate, upsample
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         '--epoch', type=int, default=601, help='number of epochs')
     parser.add_argument('--output', type=str, default='outputs', help='output folder name')
     parser.add_argument('--model', type=str, default='', help='model path')
-    parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw | tt | synthtext | msra")
+    parser.add_argument('--dataset_type', type=str, default='ctw', help="dataset type - ctw | tt | synthtext | msra | ic15")
     parser.add_argument('--gpu', type=bool, default=False, help="GPU being used or not")
 
     opt = parser.parse_args()
@@ -110,6 +110,13 @@ if __name__ == '__main__':
                                       short_size=736,
                                       kernel_scale=0.7,
                                       report_speed=False)
+    elif dataset_type == 'ic15': # msra dataset
+        train_dataset = ic15.PAN_IC15(split='test',
+                                      is_transform=True,
+                                      img_size=736,
+                                      short_size=736,
+                                      kernel_scale=0.5,
+                                      with_rec=False)
     else:
         print("Not supported yet!")
         exit(1)
