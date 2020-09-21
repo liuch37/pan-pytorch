@@ -111,7 +111,7 @@ if __name__ == '__main__':
                                       kernel_scale=0.7,
                                       report_speed=False)
     elif dataset_type == 'ic15': # msra dataset
-        train_dataset = ic15.PAN_IC15(split='test',
+        train_dataset = ic15.PAN_IC15(split='train',
                                       is_transform=True,
                                       img_size=736,
                                       short_size=736,
